@@ -20,14 +20,17 @@ function getActiveCount() {
 	return gTodos.filter(todo => !todo.isDone).length
 }
 
+function setSortBy(sortBy) {
+	console.log(sortBy);
+}
+
 function setFilterBy(filterBy) {
 	gFilterBy = filterBy
 }
 
-function addTodo(txt) {
-	const todo = _createTodo(txt)
+function addTodo(txt, imp) {
+	const todo = _createTodo(txt, imp)
 	gTodos.unshift(todo)
-
 	_saveTodos()
 }
 
@@ -51,17 +54,17 @@ function _createTodos() {
 	gTodos = loadFromStorage('todosDB')
 	if (gTodos && gTodos.length) return
 
-	gTodos = [_createTodo('Do this'), _createTodo('Do that'), _createTodo('Try here')]
+	gTodos = [_createTodo('Do this', 2), _createTodo('Do that'), _createTodo('Try here', 3)]
 	_saveTodos()
 }
 
-function _createTodo(txt) {
+function _createTodo(txt, imp = 1) {
 	return {
 		id: makeId(),
 		txt,
 		isDone: false,
 		createdAt: getDate(),
-		importance: getRandomInt(1, 4)
+		importance: imp
 	}
 }
 

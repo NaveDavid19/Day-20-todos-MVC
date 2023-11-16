@@ -1,49 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/todos.css">
-        <title>Todo MVC</title>
-    </head>
-    <body onload="onInit()">
-        <h1>Let's Todo Today</h1>
 
-        <header>
-            <form onsubmit="onAddTodo(event)" class="add-todo">
-                <input type="text" placeholder="What to do?">
-                <button>Add</button>
-            </form>
-    
-            <section class="filter">
-                <label>Filter by:</label>
-                <select onchange="onSetFilterBy(this)">
-                    <option value="All">All</option>
-                    <option value="Done">Done</option>
-                    <option value="Active">Active</option>
-                </select>
-            </section>
-        </header>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/todos.css">
+    <title>Todo MVC</title>
+</head>
 
-        <main>
-            <ul class="todo-list"></ul>
-        </main>
+<body onload="onInit()">
+    <h1>Let's Todo Today</h1>
 
-        <footer>
-            <span>Coffeerights 2023</span>
-            <section class="stats">
-                <span>Total:</span>
-                <span class="total-count"></span>
-    
-                <span>Active:</span>
-                <span class="active-count"></span>
-            </section>
-        </footer>
+    <header>
+        <form onsubmit="onAddTodo(event)" class="add-todo">
+            <input type="text" placeholder="What to do?">
+            <input class="importance" type="number" placeholder="Importance" min="1" max="3">
+            <button>Add</button>
+        </form>
+        <section class="sort">
+            <label>Sort by:</label>
+            <select onchange="onSetSortBy(this)">
+                <option value="Text">Text</option>
+                <option value="Created">Created</option>
+                <option value="Importance">Importance</option>
+            </select>
+        </section>
 
-        <script src="js/services/util.service.js"></script>
-        <script src="js/services/storage.service.js"></script>
-        <script src="js/services/todo.service.js"></script>
-        <script src="js/todo.controller.js"></script>
-    </body>
+        <section class="filter">
+            <label>Filter by:</label>
+            <select onchange="onSetFilterBy(this)">
+                <option value="All">All</option>
+                <option value="Done">Done</option>
+                <option value="Active">Active</option>
+            </select>
+        </section>
+    </header>
+
+    <main>
+        <ul class="todo-list"></ul>
+    </main>
+
+    <footer>
+        <span>Coffeerights 2023</span>
+        <section class="stats">
+            <span>Total:</span>
+            <span class="total-count"></span>
+
+            <span>Active:</span>
+            <span class="active-count"></span>
+        </section>
+    </footer>
+
+    <script src="js/services/util.service.js"></script>
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/todo.service.js"></script>
+    <script src="js/todo.controller.js"></script>
+</body>
+
 </html>
