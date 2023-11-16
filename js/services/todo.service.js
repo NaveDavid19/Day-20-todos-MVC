@@ -60,7 +60,8 @@ function _createTodo(txt) {
 		id: makeId(),
 		txt,
 		isDone: false,
-		createdAt: getDate()
+		createdAt: getDate(),
+		importance: getRandomInt(1, 4)
 	}
 }
 
