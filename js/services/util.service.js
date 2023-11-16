@@ -15,3 +15,14 @@ function getRandomInt(min, max) {
 	max = Math.floor(max)
 	return Math.floor(Math.random() * (max - min) + min) // The maximum is exclusive and the minimum is inclusive
 }
+
+function getDate() {
+	const date = new Date();
+
+	let day = date.getDate();
+	let month = date.getMonth() + 1;
+	let year = date.getFullYear();
+
+	let currentDate = `${day}-${month}-${year}`;
+	return currentDate
+}

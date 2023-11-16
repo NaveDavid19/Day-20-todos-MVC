@@ -8,8 +8,9 @@ function renderTodos() {
     const elTodoList = document.querySelector('.todo-list')
     const strHtml = getTodos().map(todo => `
         <li onclick="onToggleTodo('${todo.id}')">
-            <span class="${ todo.isDone ? 'done' : '' }">${todo.txt}</span>
+            <span class="${todo.isDone ? 'done' : ''}">${todo.txt}</span>
             <button onclick="onRemoveTodo(event, '${todo.id}')">x</button>
+            <span>${todo.createdAt}</span>
         </li>
     `).join('')
 
@@ -26,11 +27,11 @@ function onAddTodo(ev) {
     ev.preventDefault()
 
     const elInput = document.querySelector('input')
-    if(!elInput.value) return
+    if (!elInput.value) return
 
     addTodo(elInput.value)
     elInput.value = ''
-    
+
     renderTodos()
 }
 
