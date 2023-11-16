@@ -6,17 +6,27 @@ function onInit() {
 
 function renderTodos() {
     const elTodoList = document.querySelector('.todo-list')
-    const strHtml = getTodos().map(todo => `
+    if (!getTotalCount()) {
+        elTodoList.innerText = 'No Todos'
+    }
+    else if (gFilterBy === 'Active' && !getActiveCount()) {
+        elTodoList.innerText = 'No Active Todos'
+    }
+    else if (gFilterBy === 'Done' && getActiveCount() === getTotalCount()) {
+        elTodoList.innerText = 'No Done Todos'
+    }
+    else {
+        const strHtml = getTodos().map(todo => `
         <li onclick="onToggleTodo('${todo.id}')">
-            <span class="${todo.isDone ? 'done' : ''}">${todo.importance}:  ${todo.txt}:</span>
-            
+        <span class="${todo.isDone ? 'done' : ''}">${todo.importance}:  ${todo.txt}:</span>
+        
             <span>${todo.createdAt}</span>
             <button onclick="onRemoveTodo(event, '${todo.id}')">x</button>
-        </li>
-    `).join('')
+            </li>
+            `).join('')
 
-    elTodoList.innerHTML = strHtml
-
+        elTodoList.innerHTML = strHtml
+    }
     const elTotalCount = document.querySelector('.total-count')
     const elActiveCount = document.querySelector('.active-count')
 
