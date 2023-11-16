@@ -21,7 +21,25 @@ function getActiveCount() {
 }
 
 function setSortBy(sortBy) {
-	console.log(sortBy);
+	if (sortBy === 'Text') {
+		gTodos.sort((a, b) => {
+			const nameA = a.txt.toUpperCase();
+			const nameB = b.txt.toUpperCase();
+			if (nameA < nameB) {
+				return -1;
+			}
+			if (nameA > nameB) {
+				return 1;
+			}
+			return 0;
+		});
+	}
+	if (sortBy === 'Importance') {
+		gTodos.sort((a, b) => a.importance - b.importance);
+	}
+	if (sortBy === 'Created') {
+		gTodos.sort((a, b) => a.createdAt - b.createdAt);
+	}
 }
 
 function setFilterBy(filterBy) {
