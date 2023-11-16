@@ -53,10 +53,12 @@ function addTodo(txt, imp) {
 }
 
 function removeTodo(todoId) {
-	const idx = gTodos.findIndex(todo => todo.id === todoId)
-	gTodos.splice(idx, 1)
+	if (confirm('are you sure?')) {
+		const idx = gTodos.findIndex(todo => todo.id === todoId)
+		gTodos.splice(idx, 1)
 
-	_saveTodos()
+		_saveTodos()
+	}
 }
 
 function toggleTodo(todoId) {
